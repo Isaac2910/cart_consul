@@ -1,0 +1,31 @@
+# Environnement virtuel
+env/
+venv/
+
+# Fichiers Python compilés
+__pycache__/
+*.py[cod]
+*.so
+
+# Fichiers de logs
+*.log
+
+# Fichiers de base de données
+*.sqlite3
+
+# Secrets ou fichiers d’environnement
+.env
+
+# Dossiers de cache
+*.egg-info/
+dist/
+build/
+
+# Fichiers générés par l'éditeur
+.vscode/
+.idea/
+*.swp
+
+# Migrations (optionnel selon workflow)
+**/migrations/*.pyc
+**/migrations/__pycache__/
