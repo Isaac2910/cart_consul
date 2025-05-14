@@ -1,0 +1,75 @@
+{%load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gambian ID Card</title>
+    <link rel="stylesheet" href="../static/carte.css">
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+            <div class="header">
+                <!-- <div class="country-info">
+                    <span>REPUBLIC OF THE GAMBIA</span>
+                    
+                </div> -->
+                <!-- <div class="card-type">
+                    <span>IDENTITY CARD / CARTE D'IDENTITE</span>
+                </div> -->
+            </div>
+            <div class="content">
+                <div class="photo-area">
+                    <!-- Placeholder for photo -->
+                     <svg width="100" height="120" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="120" fill="#D9D9D9"/>
+                        <path d="M50 40C58.2843 40 65 33.2843 65 25C65 16.7157 58.2843 10 50 10C41.7157 10 35 16.7157 35 25C35 33.2843 41.7157 40 50 40Z" fill="#AEAEAE"/>
+                        <path d="M80 80C80 68.9543 66.5685 60 50 60C33.4315 60 20 68.9543 20 80V90H80V80Z" fill="#AEAEAE"/>
+                    </svg>
+                </div>
+                <div class="details">
+                    <div class="field">
+                        
+                        <span class="value"> Name/Noms:</span>
+                    </div>
+                    <div class="field">
+                        
+                        <span class="value">Given Names/Prenoms:</span>
+                    </div>
+                     <div class="field small-group">
+                        <div class="sub-field">
+                            
+                            <span class="value">Date of brith/Date de nais: </span>
+                        </div>
+                        <div class="sub-field">
+                            
+                            <span class="value">Sex/Sexe: </span>
+                        </div>
+                        
+                    </div>
+                    <div class="field">
+                        
+                        <span class="value">Nationality/Nationalite: </span>
+                    </div>
+                    
+
+                </div>
+                
+            </div>
+         
+
+        </div>
+    </div>
+
+    <button id="print-button">Imprimer</button>
+
+    <script>
+        document.getElementById('print-button').addEventListener('click', function() {
+            window.print();
+        });
+    </script>
+</body>
+</html>
