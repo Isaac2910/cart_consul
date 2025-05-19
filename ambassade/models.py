@@ -54,20 +54,4 @@ class DemandeCarteConsulaire(models.Model):
         return f"{self.nom.upper()} {self.prenom.capitalize()} - {self.numero_dossier}"
 
 
-# --- Modèle AgentConsulaire ---
-class AgentConsulaire(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    nom_complet = models.CharField(max_length=150)
-    fonction = models.CharField(max_length=100)
-    telephone = models.CharField(max_length=20, blank=True, null=True)
-    actif = models.BooleanField(default=True)
 
-    date_creation = models.DateTimeField(auto_now_add=True)
-    date_mise_a_jour = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name = "Agent consulaire"
-        verbose_name_plural = "Agents consulaires"
-
-    def __str__(self):
-        return f"{self.nom_complet} ({self.fonction})"

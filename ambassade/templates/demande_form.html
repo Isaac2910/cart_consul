@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'inscription interactif</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Formulaire d'inscription</h1>
+        <form method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+
+            {# Nom #}
+            <div class="form-group">
+                <div class="input-wrapper">
+                    {{ form.nom }}
+                    <label for="id_nom">Nom :</label>
+                </div>
+                {{ form.nom.errors.as_text|default:'' }}
+            </div>
+
+            {# Prénom #}
+            <div class="form-group">
+                <div class="input-wrapper">
+                    {{ form.prenom }}
+                    <label for="id_prenom">Prénom :</label>
+                </div>
+                {{ form.prenom.errors.as_text|default:'' }}
+            </div>
+
+            {# Email #}
+            <div class="form-group">
+                <div class="input-wrapper">
+                    {{ form.email }}
+                    <label for="id_email">Email :</label>
+                </div>
+                {{ form.email.errors.as_text|default:'' }}
+            </div>
+
+            {# Téléphone #}
+            <div class="form-group">
+                <div class="input-wrapper">
+                    {{ form.telephone }}
+                    <label for="id_telephone">Numéro de téléphone :</label>
+                </div>
+                {{ form.telephone.errors.as_text|default:'' }}
+            </div>
+
+            {# Date de naissance #}
+            <div class="form-group">
+                <div class="input-wrapper">
+                    {{ form.date_naissance }}
+                    <label for="id_date_naissance">Date de naissance :</label>
+                </div>
+                {{ form.date_naissance.errors.as_text|default:'' }}
+            </div>
+
+            {# Sexe #}
+            <div class="form-group">
+                <label>Sexe :</label>
+                <div class="input-wrapper">
+                    {{ form.sexe }}
+                </div>
+                {{ form.sexe.errors.as_text|default:'' }}
+            </div>
+
+            {# Nationalité #}
+            <div class="form-group">
+                <div class="input-wrapper">
+                    {{ form.nationalite }}
+                    <label for="id_nationalite">Nationalité/Nationality :</label>
+                </div>
+                {{ form.nationalite.errors.as_text|default:'' }}
+            </div>
+
+            {# Adresse #}
+            <div class="form-group">
+                <div class="input-wrapper">
+                    {{ form.adresse }}
+                    <label for="id_adresse">Adresse :</label>
+                </div>
+                {{ form.adresse.errors.as_text|default:'' }}
+            </div>
+
+            {# Photo identité #}
+            <div class="form-group">
+                <label for="id_photo_identite">Insertion photo (max 2 MB) :</label>
+                {{ form.photo_identite }}
+                <div id="photo-preview-container">
+                    <img id="photo-preview" src="#" alt="Aperçu photo" style="display:none;" />
+                </div>
+                {{ form.photo_identite.errors.as_text|default:'' }}
+            </div>
+
+            {# Pièce identité #}
+            <div class="form-group">
+                <label for="id_piece_identite">Pièce afférente (max 5 MB) :</label>
+                {{ form.piece_identite }}
+                {{ form.piece_identite.errors.as_text|default:'' }}
+            </div>
+
+            {# Justificatif domicile #}
+            <div class="form-group">
+                <label for="id_justificatif_domicile">Justificatif de domicile :</label>
+                {{ form.justificatif_domicile }}
+                {{ form.justificatif_domicile.errors.as_text|default:'' }}
+            </div>
+
+            <button type="submit" class="submit-btn">Soumettre</button>
+        </form>
+    </div>
+
+    <script>
+        // Prévisualisation de la photo
+        const photoInput = document.getElementById('id_photo_identite');
+        const previewImg = document.getElementById('photo-preview');
+        if (photoInput) {
+            photoInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (evt) => {
+                        previewImg.src = evt.target.result;
+                        previewImg.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

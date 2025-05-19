@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <h1>Détail de la demande n°{{ demande.id }}</h1>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <p><strong>Nom :</strong> {{ demande.nom }}</p>
+      <p><strong>Prénom :</strong> {{ demande.prenom }}</p>
+      <p><strong>Date de naissance :</strong> {{ demande.date_naissance|date:"d/m/Y" }}</p>
+      <p><strong>Sexe :</strong> {{ demande.get_sexe_display }}</p>
+      <p><strong>Nationalité :</strong> {{ demande.nationalite }}</p>
+      <p><strong>Adresse :</strong> {{ demande.adresse|linebreaksbr }}</p>
+      <p><strong>Téléphone :</strong> {{ demande.telephone }}</p>
+      <p><strong>Email :</strong> {{ demande.email }}</p>
+      <p><strong>Date de création :</strong> {{ demande.created_at|date:"d/m/Y H:i" }}</p>
+
+      {% if demande.photo_identite %}
+        <p><strong>Photo d’identité :</strong></p>
+        <img src="{{ demande.photo_identite.url }}" alt="Photo identité" class="img-fluid rounded mb-3" style="max-width:200px;">
+      {% endif %}
+
+      {% if demande.piece_identite %}
+        <p><strong>Pièce d’identité :</strong> 
+          <a href="{{ demande.piece_identite.url }}" target="_blank">Télécharger</a>
+        </p>
+      {% endif %}
+
+      {% if demande.justificatif_domicile %}
+        <p><strong>Justificatif de domicile :</strong> 
+          <a href="{{ demande.justificatif_domicile.url }}" target="_blank">Télécharger</a>
+        </p>
+      {% endif %}
+
+      <a href="{% url 'liste_demandes' %}" class="btn btn-secondary mt-3">Retour à la liste</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

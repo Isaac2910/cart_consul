@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h1>Toutes les demandes</h1>
+
+  {% if demandes %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Date de naissance</th>
+          <th>Nationalité</th>
+          <th>Date de création</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in demandes %}
+          <tr>
+            <td>{{ d.id }}</td>
+            <td>{{ d.nom }}</td>
+            <td>{{ d.prenom }}</td>
+            <td>{{ d.date_naissance }}</td>
+            <td>{{ d.nationalite }}</td>
+            <td>{{ d.created_at|date:"d/m/Y H:i" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {# Pagination, si utilisée #}
+    {% if is_paginated %}
+      <nav aria-label="Pagination">
+        <ul class="pagination">
+          {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo; Préc.</a>
+            </li>
+          {% endif %}
+          <li class="page-item disabled"><span class="page-link">Page {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span></li>
+          {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.next_page_number }}">Suiv. &raquo;</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
+
+  {% else %}
+    <p>Aucune demande pour l’instant.</p>
+  {% endif %}
+</div>
+{% endblock %}

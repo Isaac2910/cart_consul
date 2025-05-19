@@ -1,6 +1,6 @@
 # consul
 
-python manage.py : pour lancer le serveur de dev
+python manage.py runserver: pour lancer le serveur de dev
 
 Créer les migrations : python manage.py makemigrations
 
